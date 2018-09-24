@@ -15,10 +15,14 @@ $stmt->execute(array(
 $file = "../mysql/medical-report2.csv";
 $handle = fopen($file, "r");
 $c = 0;
-while (($filesop = fgetcsv($handle, 1000, ",")) !== false) {
-    $filesop = array_map("utf8_encode", $filesop);
+while (($filesop = fgetcsv($handle, 1000, "|")) !== false) {
+    //$filesop = array_map("utf8_encode", $filesop);
     $name = $filesop[0];
     $disease_id = $filesop[1];
+
+    if (!$disease_id) {
+        $disease_id = "NONE$c";
+    }
 
     $stmt = $conn->prepare("INSERT INTO diseases(disease_id, name)
     VALUES(:disease_id, :name)");
@@ -26,7 +30,7 @@ while (($filesop = fgetcsv($handle, 1000, ",")) !== false) {
         "disease_id" => $disease_id,
         "name" => $name
     ));
-
+    $c++;
 }
 
 
