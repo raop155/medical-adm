@@ -14,7 +14,7 @@ $options = [
 
 try {
     $conn = new PDO("$dbtype:host=$host;dbname=$dbname;charset=$charset", $username, $password, $options);
-    echo "Connected successfully";
+    // echo "Connected successfully";
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
