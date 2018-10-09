@@ -1,0 +1,11 @@
+Todo es anual.
+
+graficos y filtros
+tops
+
+por empresa diferente, users(pacientes)
+
+lista CIE (diagnostoicos)
+
+graficos con filtros (año mes dia)
+
